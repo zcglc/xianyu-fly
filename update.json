@@ -1,5 +1,11 @@
 {
     "version": "0.1",
-    "filename": "咸鱼一刀切-翻身.exe",
-    "url": "https://你的直链网盘/咸鱼一刀切-翻身v0.2版本.exe"
+    "filename": "咸鱼一顿切_v0.2.exe",
+    "url": "https://gitee.com/你的名字/仓库名/releases/download/v0.2/你的程序.exe",
+    "workflows": [
+        {
+            "name": "扩图工作流_v1.json",
+            "url": "https://gitee.com/你的名字/仓库名/raw/master/workflow_v1.json"
+        }        
+    ]
 }
