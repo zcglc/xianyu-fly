@@ -1,0 +1,367 @@
+{
+  "1": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "K采样器选择"
+    }
+  },
+  "2": {
+    "inputs": {
+      "cfg": 1,
+      "model": [
+        "9",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFG引导器"
+    }
+  },
+  "3": {
+    "inputs": {
+      "conditioning": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "条件零化"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": "去除#00ff00颜色部分",
+      "clip": [
+        "10",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "6": {
+    "inputs": {
+      "conditioning": [
+        "4",
+        0
+      ],
+      "latent": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "7": {
+    "inputs": {
+      "filename_prefix": "Flux2-Klein",
+      "images": [
+        "24",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "8": {
+    "inputs": {
+      "noise_seed": 399069941617792
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "随机噪波"
+    }
+  },
+  "9": {
+    "inputs": {
+      "unet_name": "flux\\flux-2-klein-4b_3.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "10": {
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "11": {
+    "inputs": {
+      "samples": [
+        "12",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "12": {
+    "inputs": {
+      "noise": [
+        "8",
+        0
+      ],
+      "guider": [
+        "2",
+        0
+      ],
+      "sampler": [
+        "1",
+        0
+      ],
+      "sigmas": [
+        "18",
+        0
+      ],
+      "latent_image": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "自定义采样器（高级）"
+    }
+  },
+  "13": {
+    "inputs": {
+      "conditioning": [
+        "3",
+        0
+      ],
+      "latent": [
+        "16",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "参考Latent"
+    }
+  },
+  "14": {
+    "inputs": {
+      "color": "0, 255, 0",
+      "device": "cpu",
+      "image": [
+        "22",
+        0
+      ],
+      "mask": [
+        "25",
+        1
+      ]
+    },
+    "class_type": "DrawMaskOnImage",
+    "_meta": {
+      "title": "Draw Mask On Image"
+    }
+  },
+  "15": {
+    "inputs": {
+      "images": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "16": {
+    "inputs": {
+      "pixels": [
+        "14",
+        0
+      ],
+      "vae": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE编码"
+    }
+  },
+  "17": {
+    "inputs": {
+      "width": [
+        "22",
+        3
+      ],
+      "height": [
+        "22",
+        4
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "空Latent图像（Flux2）"
+    }
+  },
+  "18": {
+    "inputs": {
+      "steps": 4,
+      "width": [
+        "22",
+        3
+      ],
+      "height": [
+        "22",
+        4
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2调度器"
+    }
+  },
+  "19": {
+    "inputs": {
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "获取图像尺寸"
+    }
+  },
+  "20": {
+    "inputs": {
+      "direction": "right",
+      "match_image_size": true,
+      "image1": [
+        "25",
+        0
+      ],
+      "image2": [
+        "24",
+        0
+      ]
+    },
+    "class_type": "ImageConcanate",
+    "_meta": {
+      "title": "Image Concatenate"
+    }
+  },
+  "21": {
+    "inputs": {
+      "images": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "22": {
+    "inputs": {
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "letterbox",
+      "method": "lanczos",
+      "round_to_multiple": "32",
+      "scale_to_side": "longest",
+      "scale_to_length": 1536,
+      "background_color": "#000000",
+      "image": [
+        "25",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "图层工具：按宽高比缩放 V2"
+    }
+  },
+  "24": {
+    "inputs": {
+      "aspect_ratio": "custom",
+      "proportional_width": [
+        "19",
+        0
+      ],
+      "proportional_height": [
+        "19",
+        1
+      ],
+      "fit": "crop",
+      "method": "lanczos",
+      "round_to_multiple": "None",
+      "scale_to_side": "height",
+      "scale_to_length": [
+        "19",
+        1
+      ],
+      "background_color": "#000000",
+      "image": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "图层工具：按宽高比缩放 V2"
+    }
+  },
+  "25": {
+    "inputs": {
+      "image": "clipspace/clipspace-painted-masked-1772286362622.png [input]"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  }
+}
